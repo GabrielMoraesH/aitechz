@@ -2,7 +2,7 @@ import "server-only";
 
 import { productImageRepository } from "@/server/repositories/productImageRepository";
 import { productRepository } from "@/server/repositories/productRepository";
-import { localProductImageStorage, type ProductImageStorage } from "@/server/storage/productImageStorage";
+import { productImageStorage, type ProductImageStorage } from "@/server/storage/productImageStorage";
 
 export const MAX_PRODUCT_IMAGE_SIZE = 5 * 1024 * 1024;
 export const MAX_PRODUCT_IMAGES = 8;
@@ -44,7 +44,7 @@ export const productImageService = {
     if (existingCount + files.length > MAX_PRODUCT_IMAGES) throw new ProductImageValidationError("Cada produto pode ter no máximo 8 imagens.");
     return validateFiles(files);
   },
-  async addPrepared(productId: string, prepared: ValidatedImage[], storage: ProductImageStorage = localProductImageStorage) {
+  async addPrepared(productId: string, prepared: ValidatedImage[], storage: ProductImageStorage = productImageStorage) {
     if (!prepared.length) return;
     const product = await productRepository.findById(productId);
     if (!product) throw new ProductImageValidationError("Produto não encontrado.");
@@ -64,7 +64,7 @@ export const productImageService = {
     const prepared = await this.prepareUploads(files, count);
     await this.addPrepared(productId, prepared);
   },
-  async remove(productId: string, imageId: string, storage: ProductImageStorage = localProductImageStorage) {
+  async remove(productId: string, imageId: string, storage: ProductImageStorage = productImageStorage) {
     const product = await productRepository.findById(productId);
     const image = await productImageRepository.findById(imageId);
     if (!product || !image || image.productId !== productId) throw new ProductImageValidationError("Imagem não encontrada.");
@@ -85,7 +85,7 @@ export const productImageService = {
     [images[index], images[target]] = [images[target], images[index]];
     await productImageRepository.updatePositions(productId, images.map((image) => image.id));
   },
-  async cleanupCreatedProduct(productId: string, storage: ProductImageStorage = localProductImageStorage) {
+  async cleanupCreatedProduct(productId: string, storage: ProductImageStorage = productImageStorage) {
     const images = await productImageRepository.findByProductId(productId);
     await productImageRepository.deleteByProductId(productId);
     await removeStored(storage, images.map((image) => image.url));
