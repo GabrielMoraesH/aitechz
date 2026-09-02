@@ -1,0 +1,18 @@
+.hero { position: relative; overflow: hidden; background: linear-gradient(135deg, #f7fbff 0%, #fff 58%, #edf5ff 100%); }
+.hero::before { position: absolute; top: -12rem; left: -9rem; width: 28rem; height: 28rem; border-radius: 50%; background: rgb(11 77 219 / 5%); content: ""; }
+.inner { display: grid; min-height: 38rem; align-items: center; gap: 2rem; padding-block: 4.5rem; }
+.content { position: relative; z-index: 2; max-width: 38rem; }
+.eyebrow { color: var(--brand-blue); font-size: .75rem; font-weight: 750; letter-spacing: .14em; }
+.title { max-width: 36rem; margin-top: 1rem; color: var(--brand-blue-dark); font-size: clamp(2.5rem, 7vw, 4.75rem); font-weight: 700; letter-spacing: -.045em; line-height: 1.02; }
+.description { max-width: 34rem; margin-top: 1.5rem; color: var(--text-secondary); font-size: 1.0625rem; line-height: 1.75; }
+.actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+.visual { position: relative; min-height: 25rem; isolation: isolate; }
+.orbit { position: absolute; inset: 8% 5% 5%; border: 1px solid rgb(11 77 219 / 12%); border-radius: 50%; background: radial-gradient(circle, #fff 0%, #edf5ff 62%, transparent 63%); transform: rotate(-8deg); }
+.vehicle { position: absolute; }
+.vehicle1 { z-index: 3; inset: 3% 14% 2% 8%; }
+.vehicle2 { z-index: 4; right: 0; bottom: 3%; width: 36%; height: 52%; border-radius: 1.25rem; background: rgb(255 255 255 / 78%); box-shadow: 0 18px 50px rgb(6 26 58 / 10%); }
+.vehicle3 { z-index: 2; top: 0; right: 2%; width: 36%; height: 42%; opacity: .96; }
+.image { object-fit: contain; padding: .5rem; }
+.note { position: absolute; z-index: 5; bottom: 1.25rem; left: 0; border: 1px solid rgb(11 77 219 / 12%); border-radius: 999px; background: rgb(255 255 255 / 90%); padding: .65rem 1rem; color: var(--brand-blue-dark); font-size: .75rem; font-weight: 650; box-shadow: 0 12px 30px rgb(6 26 58 / 8%); }
+@media (min-width: 48rem) { .inner { grid-template-columns: .95fr 1.05fr; min-height: 43rem; gap: 1rem; padding-block: 5rem; } .visual { min-height: 32rem; } }
+@media (max-width: 30rem) { .actions > * { width: 100%; } .visual { min-height: 21rem; } .vehicle2, .vehicle3 { width: 40%; } }

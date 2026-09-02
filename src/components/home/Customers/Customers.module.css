@@ -1,0 +1,15 @@
+@keyframes marquee { to { transform: translateX(calc(-50% - (var(--customers-gap) / 2))); } }
+.section { padding-block: 3.5rem; }
+.marquee { margin-inline: -1rem; margin-top: 2rem; overflow: hidden; padding-inline: 1rem; }
+.track { --customers-gap: 0.75rem; display: flex; width: max-content; gap: var(--customers-gap); animation: marquee 40s linear infinite; }
+.group { display: flex; gap: var(--customers-gap); }
+.marquee:hover .track, .marquee:focus-within .track { animation-play-state: paused; }
+.imageFrame { position: relative; aspect-ratio: 3 / 4; width: 62vw; max-width: 230px; flex-shrink: 0; overflow: hidden; border-radius: 1rem; background: var(--background-secondary); }
+.image { object-fit: cover; object-position: center; }
+.action { margin-top: 1.5rem; text-align: center; }
+.instagramLink { display: inline-flex; min-height: 2.75rem; align-items: center; justify-content: center; border: 1px solid var(--brand-blue); border-radius: 0.5rem; padding: 0.625rem 1.25rem; color: var(--brand-blue); font-size: 0.875rem; font-weight: 600; transition: background-color 150ms; }
+.instagramLink:hover { background: var(--brand-blue-light); }
+.instagramLink:focus-visible { outline: 2px solid var(--brand-blue); outline-offset: 2px; }
+@media (min-width: 40rem) { .section { padding-block: 4rem; } .marquee { margin-inline: -1.5rem; padding-inline: 1.5rem; } .track { --customers-gap: 1rem; } .imageFrame { width: 30vw; } }
+@media (min-width: 64rem) { .marquee { margin-inline: 0; padding-inline: 0; } .imageFrame { width: clamp(210px, 18vw, 240px); } }
+@media (prefers-reduced-motion: reduce) { .marquee { overflow-x: auto; } .track { animation: none; } }

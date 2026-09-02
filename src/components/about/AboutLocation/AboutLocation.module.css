@@ -1,0 +1,9 @@
+.section { background: var(--background-secondary); padding-block: 4.5rem; }
+.card { display: grid; }
+.map { min-height: 20rem; border-radius: 1.5rem 1.5rem 0 0; }
+.content { border: 1px solid var(--border); border-top: 0; border-radius: 0 0 1.5rem 1.5rem; background: white; padding: 2rem; }
+.eyebrow { color: var(--brand-blue); font-size: .75rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+.title { margin-top: .85rem; color: var(--brand-blue-dark); font-size: clamp(2rem, 5vw, 3rem); font-weight: 650; letter-spacing: -.045em; }
+.description { margin-top: 1rem; color: var(--text-secondary); }
+.address { margin-block: 1.5rem; color: #475569; font-style: normal; line-height: 1.75; }
+@media (min-width: 48rem) { .section { padding-block: 5.5rem; } .card { grid-template-columns: 1.1fr .9fr; } .map { min-height: 27rem; height: auto; border-radius: 1.5rem 0 0 1.5rem; } .content { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; border-top: 1px solid var(--border); border-left: 0; border-radius: 0 1.5rem 1.5rem 0; padding: 3rem; } }

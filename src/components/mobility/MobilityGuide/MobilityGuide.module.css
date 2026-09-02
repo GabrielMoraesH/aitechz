@@ -1,0 +1,8 @@
+.section { padding-block: 4.5rem; background: var(--brand-blue-light); }
+.inner { display: grid; gap: 2.5rem; }
+.list { border-top: 1px solid rgb(11 77 219 / 15%); }
+.row { display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem; border-bottom: 1px solid rgb(11 77 219 / 15%); padding-block: 1.5rem; }
+.row > span { color: var(--brand-blue); font-size: .75rem; font-weight: 750; }
+.row h3 { color: var(--brand-blue-dark); font-size: 1.15rem; font-weight: 650; }
+.row p { margin-top: .45rem; color: var(--text-secondary); font-size: .9rem; line-height: 1.6; }
+@media (min-width: 48rem) { .section { padding-block: 6rem; } .inner { grid-template-columns: .9fr 1.1fr; align-items: center; gap: 5rem; } }

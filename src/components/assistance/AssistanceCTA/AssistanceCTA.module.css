@@ -1,0 +1,12 @@
+.section { padding-block: 1rem 5rem; background: white; }
+.panel { position: relative; display: grid; align-items: center; gap: 2rem; overflow: hidden; border-radius: 1.5rem; background: linear-gradient(135deg, var(--brand-blue-dark), #0a3473); padding: 2rem; color: white; box-shadow: 0 24px 70px rgb(6 26 58 / 16%); }
+.panel::after { position: absolute; right: -6rem; bottom: -9rem; width: 21rem; height: 21rem; border: 1px solid rgb(255 255 255 / 10%); border-radius: 9999px; content: ""; }
+.content, .button { position: relative; z-index: 1; }
+.eyebrow { color: rgb(255 255 255 / 55%); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
+.title { margin-top: 0.75rem; font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 650; letter-spacing: -0.04em; }
+.description { max-width: 38rem; margin-top: 0.875rem; color: rgb(255 255 255 / 68%); line-height: 1.75; }
+.button { width: 100%; text-align: center; }
+.decoration { position: absolute; top: -3rem; right: 8%; color: rgb(255 255 255 / 5%); transform: rotate(-12deg); }
+.decorationIcon { width: 14rem; height: 14rem; }
+@media (min-width: 40rem) { .panel { padding: 3rem; } .button { width: fit-content; } }
+@media (min-width: 64rem) { .section { padding-bottom: 6rem; } .panel { grid-template-columns: minmax(0, 1fr) auto; padding: 4rem; } }

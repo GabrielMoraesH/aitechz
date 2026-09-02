@@ -1,0 +1,8 @@
+.section { padding-block: 4rem; background: var(--background-secondary); }
+.grid { display: grid; gap: 1rem; }
+.card { display: flex; gap: 1rem; border: 1px solid var(--border); border-radius: 1rem; background: white; padding: 1.5rem; }
+.icon { width: 1.5rem; height: 1.5rem; flex-shrink: 0; color: var(--brand-blue); }
+.title { color: var(--brand-blue-dark); font-size: 1.0625rem; font-weight: 650; }
+.description { margin-top: 0.5rem; color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.65; }
+@media (min-width: 40rem) { .section { padding-block: 5rem; } .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 64rem) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }

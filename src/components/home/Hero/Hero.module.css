@@ -1,0 +1,24 @@
+.hero { position: relative; overflow: hidden; background: rgb(238 245 255 / 60%); padding-block: 3.5rem; }
+.decoration { position: absolute; top: -8rem; right: -8rem; width: 24rem; height: 24rem; border: 70px solid rgb(255 255 255 / 60%); border-radius: 9999px; }
+.layout { position: relative; display: grid; align-items: center; gap: 2.5rem; }
+.content { max-width: 42rem; }
+.eyebrow { margin-bottom: 1.25rem; color: var(--brand-blue); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.19em; text-transform: uppercase; }
+.title { color: var(--brand-blue-dark); font-size: 3rem; line-height: 0.98; font-weight: 600; letter-spacing: -0.055em; }
+.titleAccent { color: var(--brand-blue); }
+.description { max-width: 36rem; margin-top: 1.5rem; color: var(--text-secondary); font-size: 1.125rem; line-height: 2rem; }
+.actions { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2rem; }
+.benefits { display: grid; gap: 0.75rem; margin-top: 2.25rem; color: var(--text-secondary); font-size: 0.875rem; }
+.benefit { display: flex; align-items: flex-start; gap: 0.5rem; }
+.check { display: grid; width: 1.25rem; height: 1.25rem; flex-shrink: 0; place-items: center; margin-top: 0.125rem; border-radius: 9999px; background: white; color: var(--brand-blue); }
+.checkIcon { width: 0.75rem; height: 0.75rem; }
+.showcase { position: relative; width: 100%; max-width: 570px; aspect-ratio: 1.12 / 1; margin-inline: auto; }
+.showcaseBase { position: absolute; inset: 8%; border-radius: 42%; background: rgb(255 255 255 / 90%); box-shadow: 0 30px 80px rgb(11 77 219 / 12%); }
+.showcaseCircleRight { position: absolute; top: 13%; right: 8%; width: 31%; height: 31%; border-radius: 9999px; background: rgb(11 77 219 / 6%); }
+.showcaseCircleLeft { position: absolute; bottom: 10%; left: 9%; width: 24%; height: 24%; border-radius: 9999px; background: rgb(255 255 255 / 75%); }
+.phone { position: absolute; z-index: 20; top: 5%; left: 21%; width: 59%; height: 84%; filter: drop-shadow(0 30px 28px rgb(6 26 58 / 24%)); }
+.airpods { position: absolute; z-index: 30; top: 7%; right: 3%; width: 24%; height: 24%; filter: drop-shadow(0 12px 20px rgb(6 26 58 / 14%)); }
+.watch { position: absolute; z-index: 30; bottom: 5%; left: 3%; width: 27%; height: 27%; filter: drop-shadow(0 12px 20px rgb(6 26 58 / 14%)); }
+.speaker { position: absolute; z-index: 30; right: 2%; bottom: 7%; width: 31%; height: 24%; filter: drop-shadow(0 12px 20px rgb(6 26 58 / 14%)); }
+.productImage { object-fit: contain; }
+@media (min-width: 40rem) { .hero { padding-block: 4rem; } .layout { gap: 3rem; } .title { font-size: 3.75rem; } .actions { flex-direction: row; } .benefits { grid-template-columns: repeat(3, minmax(0, 1fr)); } .showcase { aspect-ratio: 1.18 / 1; } .phone { left: 22%; width: 57%; } .airpods { right: 5%; } .watch { left: 5%; } .speaker { right: 4%; } }
+@media (min-width: 64rem) { .hero { padding-block: 5rem; } .layout { grid-template-columns: 1.02fr 0.98fr; gap: 3.5rem; } .title { font-size: 4.5rem; } .showcase { aspect-ratio: 1 / 0.88; } }

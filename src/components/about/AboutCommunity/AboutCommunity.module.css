@@ -1,0 +1,9 @@
+.section { padding-block: 4.5rem; }
+.heading { max-width: 48rem; }
+.eyebrow { color: var(--brand-blue); font-size: .75rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+.title { margin-top: 1rem; color: var(--brand-blue-dark); font-size: clamp(2.25rem, 6vw, 3.75rem); font-weight: 650; letter-spacing: -.05em; line-height: 1.05; }
+.description { margin-top: 1.25rem; color: var(--text-secondary); line-height: 1.7; }
+.gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: .75rem; margin-top: 2.5rem; }
+.frame { position: relative; aspect-ratio: 3 / 4; overflow: hidden; border-radius: 1.25rem; background: var(--background-secondary); box-shadow: 0 16px 36px rgb(6 26 58 / 8%); }
+.image { object-fit: cover; object-position: center top; }
+@media (min-width: 40rem) { .section { padding-block: 5.5rem; } .gallery { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; } .frame:nth-child(even) { margin-top: 2rem; } }

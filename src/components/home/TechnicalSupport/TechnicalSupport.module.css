@@ -1,0 +1,26 @@
+.section { background: var(--brand-blue-dark); padding-block: 3.5rem; color: white; }
+.layout { display: grid; align-items: center; gap: 3rem; }
+.eyebrow { color: rgb(255 255 255 / 60%); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
+.title { margin-top: 1rem; font-size: 2.25rem; font-weight: 600; letter-spacing: -0.04em; }
+.description { max-width: 36rem; margin-top: 1.25rem; color: rgb(255 255 255 / 65%); font-size: 1.125rem; line-height: 2rem; }
+.equipment { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
+.equipmentItem { border: 1px solid rgb(255 255 255 / 15%); border-radius: 9999px; background: rgb(255 255 255 / 7%); padding: 0.5rem 1rem; color: rgb(255 255 255 / 80%); font-size: 0.875rem; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.25rem; margin-top: 2rem; }
+.detailsLink { display: inline-flex; min-height: 2.75rem; align-items: center; gap: 0.4rem; border-radius: 0.5rem; color: white; font-size: 0.875rem; font-weight: 600; }
+.detailsLink:hover { color: rgb(255 255 255 / 72%); }
+.detailsLink:focus-visible { outline: 2px solid white; outline-offset: 3px; }
+.arrow { width: 1.1rem; height: 1.1rem; }
+.visual { position: relative; width: 100%; max-width: 42rem; margin-inline: auto; overflow: hidden; border: 1px solid rgb(255 255 255 / 10%); border-radius: 2rem; background: #0a2854; padding: 1.25rem; box-shadow: 0 24px 70px rgb(0 0 0 / 16%); }
+.glow { position: absolute; top: -6rem; left: 50%; width: 18rem; height: 18rem; transform: translateX(-50%); border-radius: 9999px; background: rgb(11 77 219 / 25%); filter: blur(64px); }
+.innerBorder { position: absolute; inset: 1.25rem; border: 1px solid rgb(255 255 255 / 6%); border-radius: 1.5rem; }
+.visualContent { position: relative; display: grid; min-height: 21rem; grid-template-rows: 1fr auto; gap: 1.5rem; }
+.device { position: relative; display: flex; min-height: 0; align-items: center; justify-content: center; padding-top: 0.5rem; }
+.deviceCircle, .deviceCircleDashed { position: absolute; width: 13rem; height: 13rem; border: 1px solid rgb(255 255 255 / 10%); border-radius: 9999px; background: rgb(255 255 255 / 4%); }
+.deviceCircleDashed { width: 10rem; height: 10rem; border-style: dashed; border-color: rgb(255 255 255 / 15%); background: transparent; }
+.deviceImage { position: relative; z-index: 10; width: 11rem; height: auto; object-fit: contain; filter: drop-shadow(0 24px 30px rgb(0 0 0 / 30%)); }
+.services { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.625rem; }
+.service { display: flex; min-width: 0; align-items: center; gap: 0.625rem; border: 1px solid rgb(255 255 255 / 10%); border-radius: 0.75rem; background: rgb(255 255 255 / 7%); padding: 0.75rem; color: rgb(255 255 255 / 85%); font-size: 0.875rem; font-weight: 500; }
+.serviceIcon { display: grid; width: 2rem; height: 2rem; flex-shrink: 0; place-items: center; border-radius: 0.5rem; background: rgb(255 255 255 / 10%); color: white; }
+.serviceIconSvg { width: 1rem; height: 1rem; }
+@media (min-width: 40rem) { .section { padding-block: 4.5rem; } .title { font-size: 3rem; } .visual { padding: 1.75rem; } .visualContent { min-height: 25rem; } .deviceCircle { width: 16rem; height: 16rem; } .deviceCircleDashed { width: 13rem; height: 13rem; } .deviceImage { width: 14rem; } .services { gap: 0.75rem; } .service { padding-inline: 1rem; } }
+@media (min-width: 64rem) { .layout { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 3.5rem; } }

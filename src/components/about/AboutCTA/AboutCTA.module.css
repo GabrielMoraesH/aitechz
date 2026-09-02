@@ -1,0 +1,13 @@
+.section { padding-block: 4.5rem; }
+.card { position: relative; overflow: hidden; border-radius: 1.75rem; background: var(--brand-blue); padding: 2.25rem 1.5rem; color: white; box-shadow: 0 24px 60px rgb(11 77 219 / 20%); }
+.decoration { position: absolute; top: -8rem; right: -6rem; width: 22rem; height: 22rem; border: 3.5rem solid rgb(255 255 255 / 8%); border-radius: 50%; }
+.content { position: relative; max-width: 47rem; }
+.eyebrow { color: rgb(255 255 255 / 65%); font-size: .75rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+.title { margin-top: 1rem; font-size: clamp(2.25rem, 6vw, 3.75rem); font-weight: 650; letter-spacing: -.05em; line-height: 1.05; }
+.description { margin-top: 1.25rem; color: rgb(255 255 255 / 75%); font-size: 1.0625rem; line-height: 1.7; }
+.actions { display: flex; flex-direction: column; gap: .75rem; margin-top: 2rem; }
+.whatsapp { border: 1px solid rgb(255 255 255 / 55%); background: transparent; color: white; }
+.whatsapp:hover { border-color: white; background: rgb(255 255 255 / 10%); }
+.whatsapp:focus-visible { outline-color: white; }
+@media (min-width: 30rem) { .actions { flex-direction: row; } }
+@media (min-width: 40rem) { .section { padding-block: 5.5rem; } .card { padding: 4rem; } }

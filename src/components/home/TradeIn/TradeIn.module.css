@@ -1,0 +1,16 @@
+.section { padding-block: 3.5rem; }
+.panel { overflow: hidden; border-radius: 2rem; background: var(--brand-blue-light); }
+.layout { display: grid; }
+.content { padding: 2rem; }
+.eyebrow { color: var(--brand-blue); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
+.title { max-width: 42rem; margin-top: 1rem; color: var(--brand-blue-dark); font-size: 1.875rem; font-weight: 600; letter-spacing: -0.035em; }
+.description { max-width: 42rem; margin-top: 1rem; color: var(--text-secondary); line-height: 1.75rem; }
+.benefits { display: grid; gap: 0.75rem; margin-top: 1.75rem; }
+.benefit { display: flex; align-items: center; gap: 0.5rem; color: var(--brand-blue-dark); font-size: 0.875rem; font-weight: 500; }
+.check { display: grid; width: 1.5rem; height: 1.5rem; place-items: center; border-radius: 9999px; background: white; color: var(--brand-blue); }
+.checkIcon { width: 0.875rem; height: 0.875rem; }
+.aside { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; background: var(--brand-blue); padding: 2rem; color: white; }
+.phone { width: 4rem; height: 4rem; margin-bottom: 2rem; color: rgb(255 255 255 / 80%); }
+.asideText { margin-bottom: 1.5rem; color: rgb(255 255 255 / 80%); font-size: 1.125rem; line-height: 1.75rem; }
+@media (min-width: 40rem) { .section { padding-block: 4rem; } .content, .aside { padding: 3rem; } .title { font-size: 2.25rem; } .benefits { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 64rem) { .layout { grid-template-columns: 1.35fr 0.65fr; } }

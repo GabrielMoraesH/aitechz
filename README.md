@@ -2,6 +2,12 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+After applying the Prisma migrations, initialize the singleton institutional settings without overwriting existing values:
+
+```bash
+npm run store-settings:seed
+```
+
 First, run the development server:
 
 ```bash

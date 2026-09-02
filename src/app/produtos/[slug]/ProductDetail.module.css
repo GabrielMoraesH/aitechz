@@ -1,0 +1,41 @@
+.hero { padding: 2rem 0 5.5rem; background: linear-gradient(180deg, #f8fbff 0%, #fff 100%); }
+.backLink { display: inline-flex; align-items: center; gap: .55rem; color: var(--text-secondary); font-size: .9rem; font-weight: 600; transition: color 180ms; }
+.backLink:hover { color: var(--brand-blue); }
+.backLink:focus-visible, .whatsappButton:focus-visible { outline: 2px solid var(--brand-blue); outline-offset: 4px; }
+.productGrid { display: grid; grid-template-columns: minmax(0, 1.06fr) minmax(22rem, .94fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: center; margin-top: 2rem; }
+.summary { max-width: 34rem; }
+.meta, .eyebrow { margin: 0; color: var(--brand-blue); font-size: .75rem; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; }
+.title { max-width: 12ch; margin: .9rem 0 0; color: var(--brand-blue-dark); font-size: clamp(2.7rem, 5vw, 4.8rem); font-weight: 680; letter-spacing: -.055em; line-height: .98; }
+.lead { margin: 1.5rem 0 0; color: var(--text-secondary); font-size: 1.08rem; line-height: 1.75; }
+.purchaseBox { margin-top: 2rem; padding: 1.5rem; border: 1px solid #dbe7fb; border-radius: 1.2rem; background: #fff; box-shadow: 0 14px 40px rgb(11 77 219 / 7%); }
+.originalPrice { margin: 0; color: var(--text-secondary); font-size: .85rem; text-decoration: line-through; }
+.currentPrice { margin: .15rem 0 1rem; color: var(--brand-blue-dark); font-size: 1.55rem; font-weight: 750; }
+.whatsappButton { display: flex; min-height: 3.5rem; align-items: center; justify-content: center; gap: .65rem; border-radius: .75rem; background: var(--brand-blue); color: #fff; font-size: .95rem; font-weight: 700; transition: background 180ms, transform 180ms; }
+.whatsappButton:hover { background: #083eb3; transform: translateY(-1px); }
+.buttonIcon { width: 1.1rem; height: 1.1rem; }
+.benefits { display: grid; gap: .7rem; margin: 1.25rem 0 0; padding: 0; color: #526072; font-size: .86rem; list-style: none; }
+.benefits li { display: flex; align-items: center; gap: .6rem; }
+.benefits svg { width: 1rem; height: 1rem; flex: 0 0 auto; color: var(--brand-blue); stroke-width: 2.4; }
+.details { padding: 5.5rem 0; border-top: 1px solid var(--border); background: #fff; }
+.sectionHeader h2 { margin: .75rem 0 0; color: var(--brand-blue-dark); font-size: clamp(2rem, 3.5vw, 3rem); letter-spacing: -.035em; line-height: 1.1; }
+.infoList { margin: 2.5rem 0 0; border-top: 1px solid var(--border); }
+.infoList div { display: grid; grid-template-columns: minmax(8rem, 1fr) 3fr; gap: 2rem; padding: 1.4rem 0; border-bottom: 1px solid var(--border); }
+.infoList dt { color: var(--brand-blue-dark); font-size: .9rem; font-weight: 700; }
+.infoList dd { margin: 0; color: var(--text-secondary); line-height: 1.65; }
+.related { padding: 5.5rem 0 6.5rem; background: var(--background-secondary); }
+.relatedGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
+@media (max-width: 63.99rem) {
+  .productGrid { gap: 2.5rem; }
+  .relatedGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .relatedGrid article:last-child { display: none; }
+}
+@media (max-width: 47.99rem) {
+  .hero { padding: 1.5rem 0 4rem; }
+  .productGrid { grid-template-columns: 1fr; margin-top: 1.5rem; }
+  .summary { max-width: none; }
+  .title { font-size: clamp(2.6rem, 13vw, 4rem); }
+  .details, .related { padding: 4rem 0; }
+  .infoList div { grid-template-columns: 1fr; gap: .45rem; }
+  .relatedGrid { grid-template-columns: 1fr; }
+  .relatedGrid article:last-child { display: flex; }
+}

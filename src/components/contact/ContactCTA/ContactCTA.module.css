@@ -1,0 +1,12 @@
+.section { background: white; padding-block: 4.5rem; }
+.panel { position: relative; display: grid; align-items: center; gap: 2rem; overflow: hidden; border-radius: 1.5rem; background: linear-gradient(135deg, var(--brand-blue-dark), #0a3473); padding: 2rem; color: white; box-shadow: 0 24px 70px rgb(6 26 58 / 16%); }
+.panel::after { position: absolute; right: -7rem; bottom: -10rem; width: 23rem; height: 23rem; border: 1px solid rgb(255 255 255 / 10%); border-radius: 50%; content: ""; }
+.content, .actions { position: relative; z-index: 1; }
+.title { font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 650; letter-spacing: -.04em; line-height: 1.05; }
+.description { max-width: 38rem; margin-top: .875rem; color: rgb(255 255 255 / 68%); line-height: 1.75; }
+.actions { display: flex; flex-direction: column; gap: .75rem; }
+.whatsapp { border: 1px solid rgb(255 255 255 / 42%); background: transparent; color: white; }
+.whatsapp:hover { border-color: white; background: rgb(255 255 255 / 10%); }
+.whatsapp:focus-visible { outline-color: white; }
+@media (min-width: 40rem) { .section { padding-block: 5.5rem; } .panel { padding: 3rem; } .actions { flex-direction: row; } }
+@media (min-width: 64rem) { .panel { grid-template-columns: minmax(0, 1fr) auto; padding: 4rem; } }

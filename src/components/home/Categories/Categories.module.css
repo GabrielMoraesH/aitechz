@@ -1,0 +1,14 @@
+.section { padding-block: 3.5rem; }
+.actionLink { color: var(--brand-blue); font-size: 0.875rem; font-weight: 600; }
+.actionLink:hover { text-decoration: underline; }
+.actionLink:focus-visible, .card:focus-visible { outline: 2px solid var(--brand-blue); outline-offset: 2px; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+.card { display: flex; min-height: 9rem; flex-direction: column; align-items: center; justify-content: center; border: 1px solid var(--border); border-radius: 1rem; background: white; padding: 1rem; text-align: center; transition: transform 200ms, border-color 200ms, box-shadow 200ms; }
+.card:hover { transform: translateY(-0.25rem); border-color: rgb(11 77 219 / 30%); box-shadow: 0 14px 32px rgb(6 26 58 / 8%); }
+.icon { display: grid; width: 3rem; height: 3rem; place-items: center; border-radius: 0.75rem; background: var(--brand-blue-light); color: var(--brand-blue); transition: background-color 150ms, color 150ms; }
+.card:hover .icon { background: var(--brand-blue); color: white; }
+.iconSvg { width: 1.5rem; height: 1.5rem; }
+.name { margin-top: 1rem; color: var(--brand-blue-dark); font-size: 0.875rem; font-weight: 600; }
+.mobileAction { margin-top: 1.75rem; text-align: center; }
+@media (min-width: 40rem) { .section { padding-block: 4rem; } .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .mobileAction { display: none; } }
+@media (min-width: 64rem) { .grid { grid-template-columns: repeat(7, minmax(0, 1fr)); } }

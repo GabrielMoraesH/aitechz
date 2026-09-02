@@ -1,0 +1,2 @@
+.page{display:grid;gap:1.4rem}.heading span{color:#0b4ddb;font-size:.72rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase}.heading h1{margin:.35rem 0 .4rem;color:#111d33;font-size:clamp(1.8rem,4vw,2.5rem);letter-spacing:-.035em}.heading p{margin:0;color:#6b778d;line-height:1.55}
+.success,.error{padding:.8rem 1rem;border-radius:.6rem;font-size:.84rem}.success{border:1px solid #a8dfc6;background:#edf9f3;color:#126942}.error{border:1px solid #f0b7bd;background:#fff3f4;color:#9e2634}

@@ -1,0 +1,12 @@
+.page { display: grid; gap: 1.4rem; }
+.heading, .sectionTitle { display: grid; gap: .55rem; }
+.heading span, .heading strong, .heading i, .banner span, .banner strong, .banner i, .card span, .card strong, .card i, .sectionTitle strong, .sectionTitle span, .row span { display: block; overflow: hidden; border-radius: .35rem; background: #e7edf5; animation: pulse 1.6s ease-in-out infinite; }
+.heading span { width: 7rem; height: .7rem; }.heading strong { width: min(20rem, 70%); height: 2.2rem; }.heading i { width: min(27rem, 90%); height: .85rem; }
+.banner { display: grid; min-height: 9rem; align-content: end; gap: .65rem; padding: 1.6rem; border-radius: 1rem; background: #dbe6f7; }
+.banner span { width: 6rem; height: .7rem; }.banner strong { width: min(19rem, 72%); height: 1.7rem; }.banner i { width: min(28rem, 90%); height: .8rem; }
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .85rem; }.card { display: grid; min-height: 7rem; align-content: center; gap: .55rem; padding: 1rem; border: 1px solid #dfe7f1; border-radius: .85rem; background: #fff; }.card span { width: 2.2rem; height: 2.2rem; }.card strong { width: 45%; height: 1rem; }.card i { width: 75%; height: .7rem; }
+.sectionTitle strong { width: 10rem; height: 1rem; }.sectionTitle span { width: 17rem; max-width: 80%; height: .7rem; }
+.table { overflow: hidden; border: 1px solid #dfe7f1; border-radius: .9rem; background: #fff; }.tableHeader { height: 2.5rem; background: #f1f5fa; }.row { display: grid; grid-template-columns: 2fr 1fr 1fr .7fr; gap: 1rem; padding: .9rem 1rem; border-top: 1px solid #e8edf4; }.row span { height: .75rem; }
+@keyframes pulse { 50% { opacity: .52; } }
+@media (max-width: 42rem) { .cards { grid-template-columns: 1fr; }.cards .card:nth-child(n+3) { display: none; }.row { grid-template-columns: 2fr 1fr; }.row span:nth-child(n+3) { display: none; } }
+@media (prefers-reduced-motion: reduce) { .heading span, .heading strong, .heading i, .banner span, .banner strong, .banner i, .card span, .card strong, .card i, .sectionTitle strong, .sectionTitle span, .row span { animation: none; } }

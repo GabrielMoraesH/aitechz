@@ -1,0 +1,8 @@
+.section { padding-block: 4.5rem; }
+.grid { display: grid; gap: 1rem; margin-top: 2.5rem; }
+.item { display: flex; gap: 1rem; border-bottom: 1px solid var(--border); padding: 1.25rem 0; }
+.icon { display: grid; width: 2.5rem; height: 2.5rem; flex: 0 0 auto; place-items: center; border-radius: .75rem; background: var(--brand-blue-light); color: var(--brand-blue); }
+.icon svg { width: 1.25rem; }
+.item h3 { color: var(--brand-blue-dark); font-weight: 650; }
+.item p { margin-top: .4rem; color: var(--text-secondary); font-size: .875rem; line-height: 1.55; }
+@media (min-width: 48rem) { .section { padding-block: 6rem; } .grid { grid-template-columns: repeat(2, 1fr); gap: 1rem 3rem; } }

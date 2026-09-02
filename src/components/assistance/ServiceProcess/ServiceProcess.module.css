@@ -1,0 +1,9 @@
+.section { padding-block: 4rem; background: white; }
+.steps { display: grid; gap: 2rem; }
+.step { position: relative; padding-left: 4rem; }
+.step:not(:last-child)::after { position: absolute; top: 3.5rem; bottom: -2rem; left: 1.45rem; width: 1px; background: linear-gradient(var(--brand-blue), rgb(11 77 219 / 10%)); content: ""; }
+.number { position: absolute; top: 0; left: 0; display: grid; width: 3rem; height: 3rem; place-items: center; border: 1px solid rgb(11 77 219 / 18%); border-radius: 9999px; background: var(--brand-blue-light); color: var(--brand-blue); font-size: 0.75rem; font-weight: 750; letter-spacing: 0.08em; }
+.title { padding-top: 0.2rem; color: var(--brand-blue-dark); font-size: 1.125rem; font-weight: 650; }
+.description { max-width: 23rem; margin-top: 0.5rem; color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.65; }
+@media (min-width: 40rem) { .section { padding-block: 5rem; } }
+@media (min-width: 64rem) { .steps { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; } .step { padding: 4.25rem 1rem 0 0; } .step:not(:last-child)::after { top: 1.5rem; right: -0.75rem; bottom: auto; left: 3.5rem; width: auto; height: 1px; background: linear-gradient(90deg, var(--brand-blue), rgb(11 77 219 / 10%)); } }

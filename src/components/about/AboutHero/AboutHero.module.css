@@ -1,0 +1,22 @@
+.hero { position: relative; overflow: hidden; background: linear-gradient(135deg, #f8fbff 0%, #eef5ff 55%, #fff 100%); padding-block: 4rem; }
+.glow { position: absolute; top: -12rem; right: -8rem; width: 34rem; height: 34rem; border-radius: 50%; background: rgb(11 77 219 / 9%); filter: blur(20px); }
+.layout { position: relative; display: grid; align-items: center; gap: 3.5rem; }
+.content { max-width: 43rem; }
+.eyebrow { color: var(--brand-blue); font-size: .75rem; font-weight: 700; letter-spacing: .19em; text-transform: uppercase; }
+.title { margin-top: 1rem; color: var(--brand-blue-dark); font-size: clamp(2.65rem, 8vw, 5rem); font-weight: 650; letter-spacing: -.06em; line-height: .98; }
+.title span { color: var(--brand-blue); }
+.description { max-width: 39rem; margin-top: 1.5rem; color: var(--text-secondary); font-size: 1.125rem; line-height: 1.8; }
+.actions { display: flex; flex-direction: column; gap: .75rem; margin-top: 2rem; }
+.visual { position: relative; min-height: 31rem; max-width: 38rem; width: 100%; margin-inline: auto; }
+.visual::before { position: absolute; inset: 6% 4% 4% 10%; border: 1px solid rgb(11 77 219 / 12%); border-radius: 2.5rem; background: var(--brand-blue-dark); box-shadow: 0 30px 80px rgb(6 26 58 / 20%); content: ""; transform: rotate(3deg); }
+.ownerFrame { position: absolute; z-index: 2; top: 10%; right: 9%; width: min(58%, 18.75rem); aspect-ratio: 1; overflow: hidden; border: 6px solid white; border-radius: 1.75rem; box-shadow: 0 24px 50px rgb(6 26 58 / 24%); transform: rotate(3deg); }
+.ownerImage { object-fit: cover; object-position: center center; }
+.brandCard { position: absolute; z-index: 3; top: 13%; left: 0; width: 48%; border: 1px solid rgb(255 255 255 / 60%); border-radius: 1.25rem; background: rgb(255 255 255 / 94%); padding: 1rem; box-shadow: 0 18px 40px rgb(6 26 58 / 16%); backdrop-filter: blur(12px); }
+.logo { width: 100%; height: auto; }
+.brandCard p { margin-top: .5rem; color: var(--text-secondary); font-size: .7rem; }
+.productFrame { position: absolute; z-index: 4; right: 0; bottom: 0; width: 34%; aspect-ratio: 1; border: 1px solid rgb(255 255 255 / 70%); border-radius: 50%; background: white; box-shadow: 0 18px 40px rgb(6 26 58 / 18%); }
+.productImage { padding: 13%; object-fit: contain; }
+.location { position: absolute; z-index: 4; bottom: 8%; left: 3%; border: 1px solid rgb(255 255 255 / 20%); border-radius: 999px; background: var(--brand-blue); padding: .65rem 1rem; color: white; font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+@media (min-width: 30rem) { .actions { flex-direction: row; } }
+@media (min-width: 48rem) { .hero { padding-block: 5rem; } .visual { min-height: 36rem; } }
+@media (min-width: 64rem) { .hero { padding-block: 5.5rem; } .layout { grid-template-columns: minmax(0, 1fr) minmax(28rem, .9fr); gap: 4rem; } .visual { min-height: 35rem; } }

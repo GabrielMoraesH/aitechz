@@ -1,0 +1,19 @@
+.catalog { padding-block: 3rem 4.5rem; }
+.intro { max-width: 48rem; }
+.eyebrow { color: var(--brand-blue); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; }
+.title { max-width: 42rem; margin-top: 0.75rem; color: var(--brand-blue-dark); font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 700; line-height: 1.08; letter-spacing: -0.035em; }
+.description { max-width: 43rem; margin-top: 1rem; color: var(--text-secondary); font-size: 1rem; line-height: 1.7; }
+.controls { display: grid; gap: 1.25rem; margin-top: 2.25rem; }
+.resultsHeader { display: flex; min-height: 2.5rem; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1.5rem; color: var(--text-secondary); font-size: 0.875rem; }
+.clearButton { border: 0; background: transparent; padding: 0.5rem; color: var(--brand-blue); font-weight: 600; cursor: pointer; }
+.clearButton:hover { text-decoration: underline; }
+.clearButton:focus-visible, .emptyButton:focus-visible { outline: 2px solid var(--brand-blue); outline-offset: 2px; }
+.grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; margin-top: 1rem; }
+.empty { margin-top: 1rem; border: 1px solid var(--border); border-radius: 1rem; background: white; padding: 3.5rem 1.5rem; text-align: center; }
+.empty h2 { color: var(--brand-blue-dark); font-size: 1.25rem; font-weight: 650; }
+.empty p { margin-top: 0.5rem; color: var(--text-secondary); line-height: 1.6; }
+.emptyButton { min-height: 2.75rem; margin-top: 1.5rem; border: 0; border-radius: 0.625rem; background: var(--brand-blue); padding-inline: 1.25rem; color: white; font-weight: 600; cursor: pointer; transition: background-color 150ms; }
+.emptyButton:hover { background: var(--brand-blue-dark); }
+@media (min-width: 40rem) { .catalog { padding-block: 4rem 5rem; } .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 64rem) { .controls { grid-template-columns: minmax(18rem, 0.8fr) minmax(0, 1.8fr); align-items: start; } .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 80rem) { .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }

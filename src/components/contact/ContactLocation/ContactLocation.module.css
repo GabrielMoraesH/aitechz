@@ -1,0 +1,8 @@
+.section { background: var(--brand-blue); padding-block: 4.5rem; color: white; scroll-margin-top: 7rem; }
+.layout { display: grid; align-items: center; gap: 2.75rem; }
+.content { max-width: 31rem; }
+.eyebrow { color: rgb(255 255 255 / 60%); font-size: .75rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+.title { margin-top: .85rem; font-size: clamp(2.25rem, 6vw, 3.5rem); font-weight: 650; letter-spacing: -.045em; line-height: 1.05; }
+.address { margin-block: 1.5rem 1.75rem; color: rgb(255 255 255 / 78%); font-style: normal; line-height: 1.75; }
+@media (min-width: 40rem) { .section { padding-block: 5.5rem; } }
+@media (min-width: 64rem) { .layout { grid-template-columns: .75fr 1.25fr; gap: 3.5rem; } }

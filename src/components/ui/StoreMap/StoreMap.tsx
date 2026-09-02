@@ -1,0 +1,6 @@
+import Image from "next/image";
+import { Icon } from "@/components/ui/Icons";
+import type { PublicStoreSettings } from "@/lib/storeSettings";
+import styles from "./StoreMap.module.css";
+type StoreMapProps = { className?: string; settings: PublicStoreSettings };
+export function StoreMap({ className, settings }: StoreMapProps) { return <div className={`${styles.map}${className ? ` ${className}` : ""}`}><Image src="/store/MAPA-AITECHZ.png" alt="Mapa da região da Aitechz" fill sizes="(max-width: 1023px) 100vw, 58vw" className={styles.mapImage} /><div aria-hidden="true" className={styles.overlay} /><div className={styles.city}>{settings.city} - {settings.state}</div><a href={settings.mapsUrl ?? "#"} target="_blank" rel="noopener noreferrer" aria-label="Abrir localização da Aitechz no Google Maps" className={styles.marker}><span className={styles.markerIconWrap}><span className={styles.markerHalo} aria-hidden="true" /><span className={styles.markerIcon}><Icon name="location" className={styles.markerIconSvg} /></span></span><span className={styles.markerLabel}>{settings.storeName}</span></a><div className={styles.mapCard}><p className={styles.mapCardTitle}>{settings.storeName}</p><p className={styles.mapCardAddress}>{settings.street}, {settings.number}</p><p className={styles.mapCardCity}>{settings.city} - {settings.state}</p></div></div>; }

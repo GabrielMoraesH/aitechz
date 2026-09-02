@@ -1,0 +1,15 @@
+.page { display: grid; min-height: 100vh; place-items: center; padding: 1.5rem; background: linear-gradient(145deg, #eef5ff 0%, #f8fafc 48%, #fff 100%); color: #172033; }
+.card { width: min(100%, 28rem); padding: clamp(1.75rem, 6vw, 3rem); border: 1px solid #dfe5ee; border-radius: 1rem; background: #fff; box-shadow: 0 1.5rem 4rem rgb(24 39 75 / 10%); }
+.card > img { display: block; width: auto; height: 2.75rem; object-fit: contain; }
+.heading { margin: 2rem 0 1.5rem; }
+.heading span { color: #0b4ddb; font-size: .75rem; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
+.heading h1 { margin: .5rem 0 0; font-size: clamp(1.75rem, 6vw, 2.25rem); letter-spacing: -.04em; }
+.heading p { margin: .6rem 0 0; color: #647087; line-height: 1.5; }
+.error { margin: 0 0 1.25rem; padding: .8rem 1rem; border: 1px solid #fecaca; border-radius: .65rem; background: #fef2f2; color: #991b1b; font-size: .9rem; }
+.form { display: grid; gap: .6rem; }
+.form label { margin-top: .45rem; font-size: .875rem; font-weight: 700; }
+.form input { width: 100%; min-height: 2.9rem; padding: .7rem .85rem; border: 1px solid #cbd5e1; border-radius: .65rem; background: #fff; color: #172033; font: inherit; outline: none; }
+.form input:focus { border-color: #0b4ddb; box-shadow: 0 0 0 3px rgb(11 77 219 / 12%); }
+.form button { min-height: 3rem; margin-top: 1rem; border: 0; border-radius: .65rem; background: #0b4ddb; color: #fff; font-weight: 750; cursor: pointer; }
+.form button:hover { background: #083da9; }
+@media (max-width: 30rem) { .page { padding: 1rem; } .card { padding: 1.5rem; } }

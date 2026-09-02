@@ -1,0 +1,22 @@
+.toast {
+  width: min(24rem, calc(100vw - 2rem));
+  padding: .9rem 2.6rem .9rem 1rem !important;
+  border: 1px solid #dbe4f0 !important;
+  border-radius: .8rem !important;
+  background: #fff !important;
+  color: #17233a !important;
+  box-shadow: 0 .75rem 2rem rgb(8 25 54 / 14%) !important;
+  font-family: var(--font-geist-sans), Arial, sans-serif !important;
+}
+.content { gap: .15rem !important; }
+.title { color: #17233a !important; font-size: .88rem !important; font-weight: 700 !important; line-height: 1.45 !important; }
+.description { color: #66748b !important; font-size: .8rem !important; line-height: 1.45 !important; }
+.icon { display: inline-flex; width: 1.35rem; height: 1.35rem; flex: 0 0 auto; align-items: center; justify-content: center; border-radius: 999px; color: #fff; font-size: .76rem; font-weight: 850; }
+.success { background: #16844a; }
+.error { background: #c83243; }
+.warning { background: #b77905; }
+.info { background: #0b4ddb; }
+.closeButton { top: .7rem !important; right: .7rem !important; left: auto !important; width: 1.45rem !important; height: 1.45rem !important; border-color: #d5dfeb !important; background: #fff !important; color: #42516a !important; }
+@media (max-width: 32rem) {
+  .toast { width: calc(100vw - 1.5rem); }
+}

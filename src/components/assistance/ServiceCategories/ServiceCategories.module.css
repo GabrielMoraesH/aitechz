@@ -1,0 +1,11 @@
+.section { padding-block: 4rem; background: white; }
+.grid { display: grid; gap: 1rem; }
+.card { min-height: 13.5rem; border: 1px solid var(--border); border-radius: 1.25rem; background: white; padding: 1.5rem; box-shadow: 0 10px 32px rgb(6 26 58 / 4%); transition: transform 180ms, border-color 180ms, box-shadow 180ms; }
+.card:hover { transform: translateY(-0.2rem); border-color: rgb(11 77 219 / 28%); box-shadow: 0 18px 40px rgb(6 26 58 / 8%); }
+.icon { display: grid; width: 3rem; height: 3rem; place-items: center; border-radius: 0.875rem; background: var(--brand-blue-light); color: var(--brand-blue); }
+.iconSvg { width: 1.45rem; height: 1.45rem; }
+.title { margin-top: 1.5rem; color: var(--brand-blue-dark); font-size: 1.125rem; font-weight: 650; }
+.description { margin-top: 0.65rem; color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.65; }
+@media (min-width: 40rem) { .section { padding-block: 5rem; } .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 64rem) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .card:last-child { grid-column: span 3; min-height: auto; } }
+@media (min-width: 80rem) { .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } .card:last-child { grid-column: auto; } }
