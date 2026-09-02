@@ -12,14 +12,12 @@ import { publicCategoryService } from "@/server/services/publicCategoryService";
 import { publicProductService } from "@/server/services/publicProductService";
 import { storeSettingsService } from "@/server/services/storeSettingsService";
 
-export const dynamic = "force-dynamic";
-
 export default async function Home() {
   const [categories, featuredProducts, mobilityProducts, settings] = await Promise.all([
     publicCategoryService.getHomeCategories(),
     publicProductService.getFeatured(),
     publicProductService.getByCategorySlug("mobilidade-eletrica"),
-    storeSettingsService.get(),
+    storeSettingsService.getPublic(),
   ]);
 
   return (

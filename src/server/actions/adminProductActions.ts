@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { productService, ProductValidationError, type ProductFieldErrors, type ProductFormInput } from "@/server/services/productService";
 import { productImageService, ProductImageValidationError } from "@/server/services/productImageService";
 import { requireAdminUser } from "@/server/services/sessionService";
+import { invalidatePublicProducts } from "@/server/cache/publicCache";
 
 export type ProductActionState = { success: false; message?: string; imageError?: string; fieldErrors?: ProductFieldErrors; values?: ProductFormInput } | null;
 
@@ -44,6 +45,7 @@ export async function createProductAction(_state: ProductActionState, formData: 
     return actionError(error, values);
   }
   revalidatePath("/admin/produtos");
+  invalidatePublicProducts();
   redirect("/admin/produtos?created=1");
 }
 
@@ -60,6 +62,7 @@ export async function updateProductAction(id: string, _state: ProductActionState
     await productImageService.addPrepared(id, prepared);
   } catch (error) { return actionError(error, values); }
   revalidatePath("/admin/produtos");
+  invalidatePublicProducts();
   redirect("/admin/produtos?updated=1");
 }
 
@@ -73,6 +76,7 @@ export async function removeProductImageAction(productId: string, imageId: strin
   }
   revalidatePath("/admin/produtos");
   revalidatePath(`/admin/produtos/${productId}/editar`);
+  invalidatePublicProducts();
   redirect(`/admin/produtos/${productId}/editar?imageRemoved=1`);
 }
 
@@ -85,11 +89,13 @@ export async function moveProductImageAction(productId: string, imageId: string,
   }
   revalidatePath("/admin/produtos");
   revalidatePath(`/admin/produtos/${productId}/editar`);
+  invalidatePublicProducts();
 }
 
 export async function toggleProductActiveAction(id: string, wasActive: boolean): Promise<void> {
   const currentUser = await requireAdminUser();
   await productService.toggleActive(id, currentUser.id);
   revalidatePath("/admin/produtos");
+  invalidatePublicProducts();
   redirect(`/admin/produtos?${wasActive ? "deactivated" : "reactivated"}=1`);
 }

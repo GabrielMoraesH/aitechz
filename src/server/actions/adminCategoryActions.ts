@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { requireAdminUser } from "@/server/services/sessionService";
 import { categoryService, CategoryValidationError, type CategoryFieldErrors, type CategoryFormInput } from "@/server/services/categoryService";
+import { invalidatePublicCategories } from "@/server/cache/publicCache";
 
 export type CategoryActionState = {
   success: false;
@@ -30,6 +31,7 @@ export async function createCategoryAction(_state: CategoryActionState, formData
   catch (error) { return actionError(error, values); }
   revalidatePath("/admin/categorias");
   revalidatePath("/admin/produtos");
+  invalidatePublicCategories();
   redirect("/admin/categorias?created=1");
 }
 
@@ -42,6 +44,7 @@ export async function updateCategoryAction(id: string, _state: CategoryActionSta
   } catch (error) { return actionError(error, values); }
   revalidatePath("/admin/categorias");
   revalidatePath("/admin/produtos");
+  invalidatePublicCategories();
   redirect("/admin/categorias?updated=1");
 }
 
@@ -50,5 +53,6 @@ export async function toggleCategoryActiveAction(id: string, wasActive: boolean)
   await categoryService.toggleActive(id, currentUser.id);
   revalidatePath("/admin/categorias");
   revalidatePath("/admin/produtos");
+  invalidatePublicCategories();
   redirect(`/admin/categorias?${wasActive ? "deactivated" : "reactivated"}=1`);
 }

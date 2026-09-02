@@ -6,8 +6,6 @@ import { storeSettingsService } from "@/server/services/storeSettingsService";
 
 import styles from "./Produtos.module.css";
 
-export const dynamic = "force-dynamic";
-
 type ProductsPageProps = {
   searchParams: Promise<{ categoria?: string | string[] }>;
 };
@@ -15,7 +13,7 @@ type ProductsPageProps = {
 export default async function ProductsPage({ searchParams }: ProductsPageProps) {
   const categoryParam = (await searchParams).categoria;
   const initialCategorySlug = Array.isArray(categoryParam) ? categoryParam[0] : categoryParam;
-  const [catalog, settings] = await Promise.all([publicProductService.getCatalog(), storeSettingsService.get()]);
+  const [catalog, settings] = await Promise.all([publicProductService.getCatalog(), storeSettingsService.getPublic()]);
   return (
     <>
       <Header settings={settings} />

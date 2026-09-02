@@ -18,10 +18,8 @@ export const metadata: Metadata = {
   description: "Conheça opções de scooters, patinetes e motos elétricas na Aitechz em Cascavel-PR.",
 };
 
-export const dynamic = "force-dynamic";
-
 export default async function MobilityPage() {
-  const [products, settings] = await Promise.all([publicProductService.getByCategorySlug("mobilidade-eletrica"), storeSettingsService.get()]);
+  const [products, settings] = await Promise.all([publicProductService.getByCategorySlug("mobilidade-eletrica"), storeSettingsService.getPublic()]);
 
   return <><Header settings={settings} /><main className={styles.main}><MobilityHero settings={settings} /><MobilityCategories /><MobilityModels products={products} whatsapp={settings.whatsapp} /><MobilityBenefits /><MobilityGuide /><MobilityCTA settings={settings} /></main><Footer settings={settings} /></>;
 }

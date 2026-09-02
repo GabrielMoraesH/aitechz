@@ -17,8 +17,6 @@ import styles from "./ProductDetail.module.css";
 
 type ProductPageProps = { params: Promise<{ slug: string }> };
 
-export const dynamic = "force-dynamic";
-
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
   const { slug } = await params;
   const result = await publicProductService.getBySlug(slug);
@@ -32,8 +30,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
   if (!result) notFound();
 
   const product = result.dto;
-  const relatedProducts = await publicProductService.getRelated(product.id, result.categoryId);
-  const settings = await storeSettingsService.get();
+  const [relatedProducts, settings] = await Promise.all([
+    publicProductService.getRelated(product.id, result.categoryId),
+    storeSettingsService.getPublic(),
+  ]);
   const whatsappMessage = `Olá, vim pelo site da Aitechz e gostaria de saber mais sobre o ${product.name}.`;
   const currentPrice = product.promotionalPrice ?? product.price;
 

@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { offerService, OfferValidationError, type OfferFieldErrors } from "@/server/services/offerService";
 import { requireAdminUser } from "@/server/services/sessionService";
+import { invalidatePublicProducts } from "@/server/cache/publicCache";
 
 export type OfferActionState = { success: false; message?: string; fieldErrors?: OfferFieldErrors; value?: string } | null;
 
@@ -18,13 +19,13 @@ export async function setProductPromotionAction(id: string, hadPromotion: boolea
     console.error("Falha ao salvar oferta administrativa.", error);
     return { success: false, message: "Não foi possível salvar a oferta.", value };
   }
-  revalidatePath("/admin/ofertas"); revalidatePath(`/admin/ofertas/${id}`); revalidatePath("/produtos"); revalidatePath("/produtos/[slug]", "page");
+  revalidatePath("/admin/ofertas"); revalidatePath(`/admin/ofertas/${id}`); invalidatePublicProducts();
   redirect(`/admin/ofertas?${hadPromotion ? "updated" : "added"}=1`);
 }
 
 export async function removeProductPromotionAction(id: string): Promise<void> {
   const currentUser = await requireAdminUser();
   await offerService.removePromotion(id, currentUser.id);
-  revalidatePath("/admin/ofertas"); revalidatePath(`/admin/ofertas/${id}`); revalidatePath("/produtos"); revalidatePath("/produtos/[slug]", "page");
+  revalidatePath("/admin/ofertas"); revalidatePath(`/admin/ofertas/${id}`); invalidatePublicProducts();
   redirect("/admin/ofertas?removed=1");
 }

@@ -1,7 +1,10 @@
 import "server-only";
 
+import { unstable_cache } from "next/cache";
+
 import { storeSettingsRepository } from "@/server/repositories/storeSettingsRepository";
-import type { StoreSettingsDTO } from "@/lib/storeSettings";
+import { PUBLIC_CACHE_TAGS } from "@/server/cache/publicCache";
+import type { PublicStoreSettings, StoreSettingsDTO } from "@/lib/storeSettings";
 
 export type StoreSettingsField = "storeName" | "slogan" | "whatsapp" | "instagram" | "street" | "number" | "complement" | "neighborhood" | "city" | "state" | "zipCode" | "mapsUrl";
 export type StoreSettingsInput = Record<StoreSettingsField, string>;
@@ -50,8 +53,19 @@ function toDto(record: Awaited<ReturnType<typeof storeSettingsRepository.get>>):
   };
 }
 
+const getPublic = unstable_cache(
+  async (): Promise<PublicStoreSettings> => {
+    const record = await storeSettingsRepository.getPublic();
+    if (!record) throw new Error("StoreSettings não foi inicializado. Execute npm run store-settings:seed.");
+    return record;
+  },
+  ["public-store-settings"],
+  { tags: [PUBLIC_CACHE_TAGS.storeSettings] },
+);
+
 export const storeSettingsService = {
   async get(): Promise<StoreSettingsDTO> { return toDto(await storeSettingsRepository.get()); },
+  getPublic,
   async update(input: StoreSettingsInput, actorUserId: string): Promise<StoreSettingsDTO> {
     const data = validate(input);
     const existing = await storeSettingsRepository.get();

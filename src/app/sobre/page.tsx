@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 };
 
 export default async function AboutPage() {
-  const settings = await storeSettingsService.get();
+  const settings = await storeSettingsService.getPublic();
   return (
     <>
       <Header settings={settings} />

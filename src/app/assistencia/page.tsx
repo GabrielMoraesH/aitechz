@@ -17,6 +17,6 @@ export const metadata: Metadata = {
 };
 
 export default async function AssistancePage() {
-  const settings = await storeSettingsService.get();
+  const settings = await storeSettingsService.getPublic();
   return <><Header settings={settings} /><main className={styles.main}><AssistanceHero settings={settings} /><ServiceCategories /><CommonServices /><ServiceProcess /><AssistanceCTA settings={settings} /></main><Footer settings={settings} /></>;
 }
