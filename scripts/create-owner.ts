@@ -4,6 +4,7 @@ import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "@prisma/client";
 
 import { normalizeEmail } from "../src/lib/auth";
+import { hasMinimumPasswordLength, MIN_PASSWORD_LENGTH } from "../src/lib/passwordPolicy";
 import { hashPassword } from "../src/server/services/passwordService";
 
 class AdminScriptError extends Error {}
@@ -22,8 +23,8 @@ async function main(): Promise<void> {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     throw new AdminScriptError("ADMIN_EMAIL deve conter um email válido.");
   }
-  if (password.length < 12) {
-    throw new AdminScriptError("ADMIN_PASSWORD deve ter pelo menos 12 caracteres.");
+  if (!hasMinimumPasswordLength(password)) {
+    throw new AdminScriptError(`ADMIN_PASSWORD deve ter pelo menos ${MIN_PASSWORD_LENGTH} caracteres.`);
   }
 
   const db = new PrismaClient({ adapter: new PrismaPg({ connectionString }) });

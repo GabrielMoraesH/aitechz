@@ -2,6 +2,7 @@ import "server-only";
 
 import { Prisma, type UserRole } from "@prisma/client";
 import { normalizeEmail } from "@/lib/auth";
+import { hasMinimumPasswordLength, MIN_PASSWORD_LENGTH } from "@/lib/passwordPolicy";
 import { authSessionRepository } from "@/server/repositories/authSessionRepository";
 import { userRepository, type AdminUserFilters } from "@/server/repositories/userRepository";
 import { hashPassword } from "@/server/services/passwordService";
@@ -38,7 +39,7 @@ function validateIdentity(input: UpdateUserInput): UpdateUserInput {
 
 function validatePassword(input: ResetPasswordInput): string {
   const fieldErrors: UserFieldErrors = {};
-  if (input.password.length < 12) fieldErrors.password = "A senha deve ter no mínimo 12 caracteres.";
+  if (!hasMinimumPasswordLength(input.password)) fieldErrors.password = `A senha deve ter no mínimo ${MIN_PASSWORD_LENGTH} caracteres.`;
   if (input.password !== input.passwordConfirmation) fieldErrors.passwordConfirmation = "As senhas não coincidem.";
   if (Object.keys(fieldErrors).length) throw new UserValidationError(fieldErrors);
   return input.password;

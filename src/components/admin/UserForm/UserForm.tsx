@@ -4,6 +4,7 @@ import { useActionState } from "react";
 import { UnsavedChangesCancel } from "@/components/admin/UnsavedChangesCancel/UnsavedChangesCancel";
 import { useUnsavedChanges } from "@/hooks/useUnsavedChanges";
 import { getRoleLabel } from "@/lib/auth";
+import { MIN_PASSWORD_LENGTH } from "@/lib/passwordPolicy";
 import type { UserActionState } from "@/server/actions/adminUserActions";
 import type { UserField, UserFormValues } from "@/server/services/userService";
 import type { UserRole } from "@prisma/client";
@@ -21,7 +22,7 @@ export function UserForm({ initialValues, action, role, create = false }: { init
         <Field id="name" label="Nome" defaultValue={values.name} error={error("name")} minLength={2} maxLength={100} />
         <Field id="email" label="Email" type="email" defaultValue={values.email} error={error("email")} />
         {role && <div className={styles.readonly}><span>Perfil</span><strong>{getRoleLabel(role)}</strong></div>}
-        {create && <><Field id="password" label="Senha" type="password" error={error("password")} minLength={12} autoComplete="new-password" /><Field id="passwordConfirmation" label="Confirmar senha" type="password" error={error("passwordConfirmation")} minLength={12} autoComplete="new-password" /></>}
+        {create && <><Field id="password" label="Senha" type="password" error={error("password")} minLength={MIN_PASSWORD_LENGTH} autoComplete="new-password" /><Field id="passwordConfirmation" label="Confirmar senha" type="password" error={error("passwordConfirmation")} minLength={MIN_PASSWORD_LENGTH} autoComplete="new-password" /></>}
         <label className={styles.check}><input type="checkbox" name="active" defaultChecked={values.active} /><span><strong>Usuário ativo</strong><small>Permite acesso ao painel administrativo.</small></span></label>
       </div>
     </section>
