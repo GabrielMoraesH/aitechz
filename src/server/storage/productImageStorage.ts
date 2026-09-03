@@ -1,5 +1,6 @@
 import "server-only";
 
+import type { Buffer } from "node:buffer";
 import { randomUUID } from "node:crypto";
 import { mkdir, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
@@ -7,7 +8,7 @@ import { getCloudinary } from "@/server/storage/cloudinary";
 
 export type StoredProductImage = { url: string };
 export interface ProductImageStorage {
-  save(bytes: Uint8Array, extension: string): Promise<StoredProductImage>;
+  save(bytes: Buffer, extension: string): Promise<StoredProductImage>;
   remove(url: string): Promise<void>;
 }
 
@@ -74,7 +75,7 @@ export const cloudinaryProductImageStorage: ProductImageStorage = {
             else resolve({ secure_url: uploaded.secure_url });
           },
         );
-        stream.end(Buffer.from(bytes));
+        stream.end(bytes);
       });
       return { url: result.secure_url };
     } catch (error) {

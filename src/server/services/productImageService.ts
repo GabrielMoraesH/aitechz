@@ -1,5 +1,6 @@
 import "server-only";
 
+import { Buffer } from "node:buffer";
 import { productImageRepository } from "@/server/repositories/productImageRepository";
 import { productRepository } from "@/server/repositories/productRepository";
 import { productImageStorage, type ProductImageStorage } from "@/server/storage/productImageStorage";
@@ -11,7 +12,7 @@ const MIME_EXTENSIONS = { "image/jpeg": "jpg", "image/png": "png", "image/webp":
 export class ProductImageValidationError extends Error {}
 export class ProductImageStorageError extends Error {}
 
-type ValidatedImage = { bytes: Uint8Array; extension: string };
+type ValidatedImage = { bytes: Buffer; extension: string };
 
 function detectMime(bytes: Uint8Array): keyof typeof MIME_EXTENSIONS | null {
   if (bytes.length >= 3 && bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff) return "image/jpeg";
@@ -26,7 +27,7 @@ async function validateFiles(files: File[]): Promise<ValidatedImage[]> {
     if (!(file.type in MIME_EXTENSIONS)) throw new ProductImageValidationError("Formato de imagem não suportado.");
     if (file.size > MAX_PRODUCT_IMAGE_SIZE) throw new ProductImageValidationError("A imagem deve ter no máximo 5 MB.");
     if (file.size === 0) throw new ProductImageValidationError("Formato de imagem não suportado.");
-    const bytes = new Uint8Array(await file.arrayBuffer());
+    const bytes = Buffer.from(await file.arrayBuffer());
     const detectedMime = detectMime(bytes);
     if (!detectedMime || detectedMime !== file.type) throw new ProductImageValidationError("Formato de imagem não suportado.");
     validated.push({ bytes, extension: MIME_EXTENSIONS[detectedMime] });
@@ -50,12 +51,22 @@ export const productImageService = {
     if (!product) throw new ProductImageValidationError("Produto não encontrado.");
     const existingCount = await productImageRepository.countByProductId(productId);
     if (existingCount + prepared.length > MAX_PRODUCT_IMAGES) throw new ProductImageValidationError("Cada produto pode ter no máximo 8 imagens.");
-    const storedUrls: string[] = [];
-    try {
-      for (const image of prepared) storedUrls.push((await storage.save(image.bytes, image.extension)).url);
-      await productImageRepository.createMany(storedUrls.map((url, index) => ({ productId, url, position: existingCount + index, alt: existingCount + index === 0 ? product.name : `${product.name} - imagem ${existingCount + index + 1}` })));
-    } catch (error) {
+    const uploadResults = await Promise.allSettled(
+      prepared.map((image) => storage.save(image.bytes, image.extension)),
+    );
+    const storedUrls = uploadResults.flatMap((result) => result.status === "fulfilled" ? [result.value.url] : []);
+    const failedUpload = uploadResults.find((result): result is PromiseRejectedResult => result.status === "rejected");
+
+    if (failedUpload) {
       await removeStored(storage, storedUrls);
+      throw failedUpload.reason;
+    }
+
+    const orderedUrls = uploadResults.map((result) => (result as PromiseFulfilledResult<{ url: string }>).value.url);
+    try {
+      await productImageRepository.createMany(orderedUrls.map((url, index) => ({ productId, url, position: existingCount + index, alt: existingCount + index === 0 ? product.name : `${product.name} - imagem ${existingCount + index + 1}` })));
+    } catch (error) {
+      await removeStored(storage, orderedUrls);
       throw error;
     }
   },
