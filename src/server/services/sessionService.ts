@@ -25,6 +25,7 @@ export async function createSession(userId: string): Promise<void> {
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
     path: "/admin",
+    maxAge: ADMIN_SESSION_DURATION_MS / 1000,
     expires: expiresAt,
     priority: "high",
   });
