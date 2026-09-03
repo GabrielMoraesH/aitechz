@@ -18,7 +18,7 @@ export function ProductCard({ product, whatsapp }: ProductCardProps) {
     <article className={styles.card}>
       <Link href={`/produtos/${product.slug}`} className={styles.productLink}>
         <div className={styles.imageFrame}>
-          {image ? <Image src={image.url} alt={image.alt} fill sizes="(max-width: 639px) calc(100vw - 2rem), (max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 25vw" className={styles.image} /> : <div className={styles.placeholder} aria-label="Produto sem imagem"><Icon name="computer" /></div>}
+          {image ? <Image src={image.url} alt={image.alt} fill sizes="(max-width: 359px) calc(100vw - 2rem), (max-width: 639px) calc((100vw - 2.75rem) / 2), (max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 25vw" className={styles.image} /> : <div className={styles.placeholder} aria-label="Produto sem imagem"><Icon name="computer" /></div>}
         </div>
         <div className={styles.productContent}>
           <p className={styles.meta}>{product.brand} <span aria-hidden="true">•</span> {product.category}</p>

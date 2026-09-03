@@ -39,3 +39,6 @@
   .relatedGrid { grid-template-columns: 1fr; }
   .relatedGrid article:last-child { display: flex; }
 }
+@media (min-width: 22.5rem) and (max-width: 47.99rem) {
+  .relatedGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
+}
